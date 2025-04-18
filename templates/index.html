@@ -5,18 +5,13 @@
 </head>
 <body>
     <h1>Scoreboard</h1>
-    <ul>
-        <ul>
-            {% for name, score in scores %}
-            <li>
-                {{ name }}: {{ score }}
-                <form action="/remove" method="post" style="display:inline;">
-                    <input type="hidden" name="name" value="{{ name }}">
-                    <button type="submit">Remove</button>
-                </form>
-            </li>
-            {% endfor %}
-    </ul>
+    <h2>Click a name to add 1 point:</h2>
+<form action="/update" method="post">
+    {% for name, score in scores %}
+        <button type="submit" name="name" value="{{ name }}">{{ name }} ({{ score }})</button><br><br>
+    {% endfor %}
+    <input type="hidden" name="change" value="1">
+</form>
     <form action="/add" method="post">
         <input name="name" placeholder="New player name">
         <button type="submit">Add Player</button>
