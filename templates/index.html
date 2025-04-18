@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Scoreboard</title>
+</head>
+<body>
+    <h1>Scoreboard</h1>
+    <ul>
+        <ul>
+            {% for name, score in scores %}
+            <li>
+                {{ name }}: {{ score }}
+                <form action="/remove" method="post" style="display:inline;">
+                    <input type="hidden" name="name" value="{{ name }}">
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+            {% endfor %}
+    </ul>
+    <form action="/add" method="post">
+        <input name="name" placeholder="New player name">
+        <button type="submit">Add Player</button>
+    </form>
+    <form action="/update" method="post">
+        <input name="name" placeholder="Player name">
+        <input name="change" type="number" placeholder="Score change">
+        <button type="submit">Update Score</button>
+    </form>
+</body>
+</html>
