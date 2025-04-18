@@ -1,0 +1,2 @@
+# balatro
+Balatro Scorekeeper
