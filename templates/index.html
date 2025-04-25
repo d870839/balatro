@@ -1,48 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Balatro Scoreboard</title>
+    <title>Baseball Scoreboard</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
+    <!-- Your CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="scoreboard">
-        <h1>🏟️ Balatro Scoreboard 🏟️</h1>
-        <table>
-            <tr>
-                <th>Player</th>
-                <th>Score</th>
-                <th>+1</th>
-                <th>Remove</th>
-            </tr>
-            {% for name, score in scores %}
-            <tr>
-                <td>{{ name }}</td>
-                <td>{{ score }}</td>
-                <td>
-                    <form action="/update" method="post">
-                        <input type="hidden" name="name" value="{{ name }}">
-                        <input type="hidden" name="change" value="1">
-                        <button type="submit">+1</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/remove" method="post">
-                        <input type="hidden" name="name" value="{{ name }}">
-                        <button type="submit" class="remove-btn">X</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+        <h1>🏟️ Stadium Scoreboard 🏟️</h1>
 
-        <div class="add-player">
-            <h2>Add a New Player</h2>
-            <form action="/add" method="post">
-                <input name="name" placeholder="Player Name">
-                <button type="submit">Add</button>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+        <table>
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Score</th>
+                    <th>+1</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, score in scores %}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ score }}</td>
+                    <td>
+                        <form action="/update" method="post">
+                            <input type="hidden" name="name" value="{{ name }}">
+                            <input type="hidden" name="change" value="1">
+                            <button type="submit" class="add-btn">+1</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/remove" method="post">
+                            <input type="hidden"

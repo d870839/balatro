@@ -1,0 +1,82 @@
+body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Black Ops One', 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+.scoreboard {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    border: 5px solid #0f0;
+    background-color: #000;
+    box-shadow: 0 0 20px #0f0;
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 30px;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    border: 3px solid #0f0;
+    padding: 20px;
+    font-size: 2em;
+}
+
+th {
+    background-color: #222;
+    color: #0f0;
+}
+
+td {
+    background-color: #111;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: 2px solid #0f0;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.add-btn {
+    background-color: #007bff;
+    border-color: #0af;
+}
+
+.add-btn:hover {
+    background-color: #0069d9;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    border-color: #f00;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.add-player input {
+    padding: 10px;
+    font-size: 1em;
+    margin-right: 10px;
+}
