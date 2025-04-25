@@ -37,4 +37,22 @@
                     </td>
                     <td>
                         <form action="/remove" method="post">
-                            <input type="hidden"
+                            <input type="hidden" name="name" value="{{ name }}">
+                            <button type="submit" class="remove-btn">X</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="add-player">
+            <h2>Add a New Player</h2>
+            <form action="/add" method="post">
+                <input name="name" placeholder="Player Name">
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
