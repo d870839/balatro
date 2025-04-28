@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <div class="scoreboard">
-        <img src="{{ url_for('static', filename='balatro_logo.png') }}" alt="Balatro Logo" class="logo">
-        <h1>🏟️ Balatro Scoreboard 🏟️</h1>
+        
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
@@ -22,6 +21,7 @@
   {% endif %}
 {% endwith %}
     <div class="scoreboard">
+        <img src="{{ url_for('static', filename='balatro_logo.png') }}" alt="Balatro Logo" class="logo">
         <h1>🏟️ Balatro Scoreboard 🏟️</h1>
         {% if session.get('admin') %}
         <a href="/logout"><button>Logout Admin</button></a>
