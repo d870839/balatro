@@ -1,9 +1,29 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 import sqlite3
 import os
 
 app = Flask(__name__)
 DB_PATH = 'scoreboard.db'
+app.secret_key = "my-key"
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        password = request.form['password']
+        if password == 'davidsucks':  # <-- CHANGE THIS to your secret admin password
+            session['admin'] = True
+            flash('Logged in successfully!', 'success')
+            return redirect('/')
+        else:
+            flash('Incorrect password. Try again.', 'error')
+            return redirect('/login')
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('admin', None)
+    flash('Logged out.', 'info')
+    return redirect('/')
 
 def get_scores():
     conn = sqlite3.connect(DB_PATH)

@@ -11,16 +11,32 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
     <div class="scoreboard">
         <h1>🏟️ Balatro Scoreboard 🏟️</h1>
+        {% if session.get('admin') %}
+        <a href="/logout"><button>Logout Admin</button></a>
+    {% else %}
+        <a href="/login"><button>Admin Login</button></a>
+    {% endif %}
 
         <table>
             <thead>
                 <tr>
                     <th>Player</th>
                     <th>Score</th>
+                    {% if session.get('admin') %}
                     <th>+1</th>
                     <th>Remove</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +44,7 @@
                 <tr>
                     <td>{{ name }}</td>
                     <td>{{ score }}</td>
+                    {% if session.get('admin') %}
                     <td>
                         <form action="/update" method="post">
                             <input type="hidden" name="name" value="{{ name }}">
@@ -35,17 +52,19 @@
                             <button type="submit" class="add-btn">+1</button>
                         </form>
                     </td>
+                    
                     <td>
                         <form action="/remove" method="post">
                             <input type="hidden" name="name" value="{{ name }}">
                             <button type="submit" class="remove-btn">X</button>
                         </form>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-
+        {% if session.get('admin') %}
         <div class="add-player">
             <h2>Add a New Player</h2>
             <form action="/add" method="post">
@@ -54,5 +73,6 @@
             </form>
         </div>
     </div>
+    {% endif %}
 </body>
 </html>

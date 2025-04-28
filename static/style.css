@@ -80,3 +80,31 @@ button:hover {
     font-size: 1em;
     margin-right: 10px;
 }
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-family: 'Black Ops One', 'Courier New', Courier, monospace;
+}
+
+.flash.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.flash.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+.flash.info {
+    background-color: #17a2b8;
+    color: white;
+}
