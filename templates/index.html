@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <div class="scoreboard">
-        
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-
     <!-- Your CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="scoreboard">
+        <!-- Centered Balatro Logo -->
+        <img src="{{ url_for('static', filename='balatro_logo.png') }}" alt="Balatro Logo" class="logo">
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <ul class="flashes">
@@ -19,14 +19,8 @@
       {% endfor %}
     </ul>
   {% endif %}
+
 {% endwith %}
-    <div class="scoreboard">
-        <img src="{{ url_for('static', filename='balatro_logo.png') }}" alt="Balatro Logo" class="logo">
-        {% if session.get('admin') %}
-        <a href="/logout"><button>Logout Admin</button></a>
-    {% else %}
-        <a href="/login"><button>Admin Login</button></a>
-    {% endif %}
 
         <table>
             <thead>
@@ -72,7 +66,14 @@
                 <button type="submit">Add</button>
             </form>
         </div>
+        {% endif %}
+        <div class="login-footer">
+            {% if session.get('admin') %}
+                <a href="/logout"><button class="login-btn">Logout Admin</button></a>
+            {% else %}
+                <a href="/login"><button class="login-btn">Admin Login</button></a>
+            {% endif %}
+        </div>
     </div>
-    {% endif %}
 </body>
 </html>

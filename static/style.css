@@ -22,6 +22,14 @@ h1 {
     text-shadow: 0 0 10px #0f0;
 }
 
+.logo {
+    width: 300px;
+    display: block;
+    margin: 0 auto 20px;
+}
+.login-footer {
+    margin-top: 30px;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -60,6 +68,10 @@ button:hover {
 .add-btn {
     background-color: #007bff;
     border-color: #0af;
+    color: white;
+    font-size: 1em;
+    padding: 8px 20px;
+    border-radius: 5px;
 }
 
 .add-btn:hover {
@@ -69,6 +81,10 @@ button:hover {
 .remove-btn {
     background-color: #dc3545;
     border-color: #f00;
+    color: white;
+    font-size: 1em;
+    padding: 8px 20px;
+    border-radius: 5px;
 }
 
 .remove-btn:hover {
@@ -107,4 +123,17 @@ button:hover {
 .flash.info {
     background-color: #17a2b8;
     color: white;
+}
+.login-btn {
+    font-size: 1.2em;
+    padding: 10px 30px;
+    background-color: #17a2b8;
+    border: 2px solid #0ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.login-btn:hover {
+    background-color: #138496;
 }
