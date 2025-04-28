@@ -22,7 +22,6 @@
 {% endwith %}
     <div class="scoreboard">
         <img src="{{ url_for('static', filename='balatro_logo.png') }}" alt="Balatro Logo" class="logo">
-        <h1>🏟️ Balatro Scoreboard 🏟️</h1>
         {% if session.get('admin') %}
         <a href="/logout"><button>Logout Admin</button></a>
     {% else %}
