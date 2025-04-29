@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect('scoreboard.db')
 c = conn.cursor()
 
-# Create players table (already existing)
+# Create players table if missing
 c.execute('''
 CREATE TABLE IF NOT EXISTS players (
     id INTEGER PRIMARY KEY,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS players (
 )
 ''')
 
-# Create new player_jokers table
+# ✅ Create player_jokers table
 c.execute('''
 CREATE TABLE IF NOT EXISTS player_jokers (
     id INTEGER PRIMARY KEY,
@@ -21,8 +21,16 @@ CREATE TABLE IF NOT EXISTS player_jokers (
 )
 ''')
 
+# Create jokers table if missing (you might already have this)
+c.execute('''
+CREATE TABLE IF NOT EXISTS jokers (
+    id INTEGER PRIMARY KEY,
+    name TEXT UNIQUE,
+    rarity TEXT
+)
+''')
+
 conn.commit()
 conn.close()
 
-
-# hello hello 
+print("✅ Database tables initialized successfully!")
