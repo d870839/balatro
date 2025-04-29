@@ -98,7 +98,7 @@ def select_joker():
 
 @app.route('/all_joker_stats')
 def all_joker_stats():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect('scoreboard.db')
     c = conn.cursor()
 
     c.execute('''
@@ -108,9 +108,16 @@ def all_joker_stats():
         ORDER BY count DESC
     ''')
     joker_stats = c.fetchall()
+
+    # New: also fetch rarities dynamically
+    c.execute('SELECT name, rarity FROM jokers')
+    rows = c.fetchall()
     conn.close()
 
-    return render_template('all_joker_stats.html', joker_stats=joker_stats)
+    joker_rarity = {name: rarity for name, rarity in rows}
+
+    return render_template('all_joker_stats.html', joker_stats=joker_stats, joker_rarity=joker_rarity)
+
 
 @app.route('/player/<player_name>')
 def player_stats(player_name):

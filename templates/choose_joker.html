@@ -12,11 +12,15 @@
         <h2>{{ rarity }}</h2>
         <div class="joker-group">
             {% for joker in jokers %}
-                <form action="/select_joker" method="post" style="display:inline-block;">
-                    <input type="hidden" name="player_name" value="{{ player_name }}">
-                    <input type="hidden" name="joker_name" value="{{ joker }}">
-                    <button type="submit" class="joker-btn">{{ joker }}</button>
-                </form>
+            <form action="/select_joker" method="post" style="display:inline-block; margin:10px;">
+                <input type="hidden" name="player_name" value="{{ player_name }}">
+                <input type="hidden" name="joker_name" value="{{ joker }}">
+                <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                    <img src="{{ url_for('static', filename='jokers/' + rarity|lower + '/' + joker|lower|replace(' ', '_')|replace("'", "")|replace(",", "")|replace("-", "_")|replace("?", "")|replace("!", "") + '.png') }}" 
+                         alt="{{ joker }}" 
+                         class="joker-selection-img">
+                </button>
+            </form>
             {% endfor %}
         </div>
     {% endfor %}
