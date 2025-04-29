@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Players Joker Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>All Players Joker Stats</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Joker</th>
+                <th>Times Selected</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for joker_name, count in joker_stats %}
+            <tr class="{{ joker_rarity.get(joker_name, 'Common') | lower }}">
+                <td>{{ joker_name }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="back-link">
+        <a href="/">⬅️ Back to Scoreboard</a>
+    </div>
+</body>
+</html>

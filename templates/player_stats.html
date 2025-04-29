@@ -14,13 +14,18 @@
                 <tr>
                     <th>Joker</th>
                     <th>Times Selected</th>
+                    <th>Percentage</th>
                 </tr>
             </thead>
             <tbody>
-                {% for joker_name, count in joker_stats %}
-                <tr>
-                    <td>{{ joker_name }}</td>
+                {% for idx, (joker_name, count) in enumerate(joker_stats) %}
+                <tr class="{{ joker_rarity.get(joker_name, 'Common') | lower }}">
+                    <td>
+                        {% if idx == 0 %} 🥇 {% elif idx == 1 %} 🥈 {% elif idx == 2 %} 🥉 {% endif %}
+                        {{ joker_name }}
+                    </td>
                     <td>{{ count }}</td>
+                    <td>{{ (count / total_selections * 100) | round(1) }}%</td>
                 </tr>
                 {% endfor %}
             </tbody>

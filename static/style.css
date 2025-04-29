@@ -168,3 +168,22 @@ button:hover {
 .back-link {
     margin-top: 30px;
 }
+
+.common {
+    color: white;
+}
+
+.uncommon {
+    color: limegreen;
+}
+
+.rare {
+    color: gold;
+    font-weight: bold;
+}
+
+.legendary {
+    color: violet;
+    text-shadow: 0 0 10px violet;
+    font-weight: bold;
+}
