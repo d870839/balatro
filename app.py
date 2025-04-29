@@ -29,6 +29,22 @@ joker_rarity = {
     "The Immortal": "Legendary"
 }
 
+def load_jokers_by_rarity():
+    conn = sqlite3.connect('scoreboard.db')
+    c = conn.cursor()
+    c.execute('SELECT name, rarity FROM jokers')
+    rows = c.fetchall()
+    conn.close()
+
+    jokers = {"Common": [], "Uncommon": [], "Rare": [], "Legendary": []}
+    for name, rarity in rows:
+        if rarity in jokers:
+            jokers[rarity].append(name)
+        else:
+            jokers["Common"].append(name)  # Default to Common if somehow missing
+
+    return jokers
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -58,7 +74,8 @@ def get_scores():
 
 @app.route('/choose_joker/<player_name>', methods=['GET'])
 def choose_joker(player_name):
-    return render_template('choose_joker.html', player_name=player_name, joker_rarity=joker_rarity)
+    return render_template('choose_joker.html', player_name=player_name, jokers_by_rarity=load_jokers_by_rarity())
+
 
 @app.route('/select_joker', methods=['POST'])
 def select_joker():

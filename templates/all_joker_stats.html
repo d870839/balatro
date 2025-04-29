@@ -18,7 +18,12 @@
         <tbody>
             {% for joker_name, count in joker_stats %}
             <tr class="{{ joker_rarity.get(joker_name, 'Common') | lower }}">
-                <td>{{ joker_name }}</td>
+                <td>
+                    <img src="{{ url_for('static', filename='jokers/' + joker_rarity.get(joker_name, 'common')|lower + '/' + joker_name|lower|replace(' ', '_')|replace("'", "")|replace(",", "")|replace("-", "_")|replace("?", "")|replace("!", "") + '.png') }}" 
+                         alt="{{ joker_name }}" class="joker-icon">
+                    <br>
+                    {{ joker_name }}
+                </td>
                 <td>{{ count }}</td>
             </tr>
             {% endfor %}

@@ -10,6 +10,13 @@
     }
 }
 
+.joker-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
 body {
     background-color: #111;
     color: #eee;
