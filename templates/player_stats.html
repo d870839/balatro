@@ -18,10 +18,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for idx, (joker_name, count) in enumerate(joker_stats) %}
-                <tr class="{{ joker_rarity.get(joker_name, 'Common') | lower }}">
+                {% for joker_name, count in joker_stats %}
+                <tr>
                     <td>
-                        {% if idx == 0 %} 🥇 {% elif idx == 1 %} 🥈 {% elif idx == 2 %} 🥉 {% endif %}
+                        {% if loop.index0 == 0 %} 🥇 {% elif loop.index0 == 1 %} 🥈 {% elif loop.index0 == 2 %} 🥉 {% endif %}
                         {{ joker_name }}
                     </td>
                     <td>{{ count }}</td>
