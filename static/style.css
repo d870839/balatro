@@ -154,3 +154,17 @@ button:hover {
 .login-btn:hover {
     background-color: #138496;
 }
+
+.player-link {
+    color: #0f0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.player-link:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    margin-top: 30px;
+}

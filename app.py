@@ -6,6 +6,21 @@ app = Flask(__name__)
 DB_PATH = 'scoreboard.db'
 app.secret_key = "my-key"
 
+jokers_by_rarity = {
+    "Common": [
+        "Four Fingers", "Thumb", "Eight Ball", "Odd Todd", "Even Steven"
+    ],
+    "Uncommon": [
+        "Blueprint", "Hiker", "The Arm", "Hack", "The Soul"
+    ],
+    "Rare": [
+        "Brainstorm", "Egg", "Seance", "Erosion", "Misprint"
+    ],
+    "Legendary": [
+        "Joker", "The Ankh", "Midas Mask", "Astronomer", "The Immortal"
+    ]
+}
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -32,6 +47,11 @@ def get_scores():
     scores = c.fetchall()
     conn.close()
     return scores
+
+@app.route('/choose_joker/<player_name>', methods=['GET'])
+def choose_joker(player_name):
+    return render_template('choose_joker.html', player_name=player_name, jokers_by_rarity=jokers_by_rarity)
+
 
 @app.route('/', methods=['GET'])
 def index():

@@ -36,13 +36,13 @@
             <tbody>
                 {% for name, score in scores %}
                 <tr>
-                    <td>{{ name }}</td>
+                    <td>
+                        <a href="/player/{{ name }}" class="player-link">{{ name }}</a>
+                    </td>
                     <td>{{ score }}</td>
                     {% if session.get('admin') %}
                     <td>
-                        <form action="/update" method="post">
-                            <input type="hidden" name="name" value="{{ name }}">
-                            <input type="hidden" name="change" value="1">
+                        <form action="/choose_joker/{{ name }}" method="get">
                             <button type="submit" class="add-btn">+1</button>
                         </form>
                     </td>

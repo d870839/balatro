@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ player_name }}'s Joker Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ player_name }}'s Joker Stats</h1>
+
+    {% if joker_stats %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Joker</th>
+                    <th>Times Selected</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for joker_name, count in joker_stats %}
+                <tr>
+                    <td>{{ joker_name }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Jokers selected yet!</p>
+    {% endif %}
+
+    <div class="back-link">
+        <a href="/">⬅️ Back to Scoreboard</a>
+    </div>
+</body>
+</html>
