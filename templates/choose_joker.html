@@ -16,7 +16,7 @@
                 <input type="hidden" name="player_name" value="{{ player_name }}">
                 <input type="hidden" name="joker_name" value="{{ joker }}">
                 <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-                    <img src="/static/jokers/{{ rarity|lower }}/{{ joker_name|lower|replace(' ', '_')|replace("'", "")|replace(",", "")|replace("-", "_")|replace("?", "")|replace("!", "") }}.png"
+                    <img src="/static/jokers/{{ rarity|lower }}/{{ joker|lower|replace(' ', '_')|replace("'", "")|replace(",", "")|replace("-", "_")|replace("?", "")|replace("!", "") }}.png"
                         alt="{{ joker_name }}" class="joker-icon" loading="lazy">
                 </button>
             </form>
