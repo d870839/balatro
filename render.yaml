@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: scoreboard-app
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python init_db.py && gunicorn app:app"
