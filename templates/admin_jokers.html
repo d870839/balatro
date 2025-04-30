@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Joker Rarities</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Edit Joker Rarities</h1>
+
+    <form method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Joker</th>
+                    <th>Rarity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, rarity in jokers %}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>
+                        <select name="{{ name }}">
+                            {% for option in ['Common', 'Uncommon', 'Rare', 'Legendary'] %}
+                            <option value="{{ option }}" {% if option == rarity %}selected{% endif %}>{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <div class="back-link">
+        <a href="/">⬅️ Back to Scoreboard</a>
+    </div>
+</body>
+</html>
