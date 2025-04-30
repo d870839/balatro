@@ -76,6 +76,27 @@ def get_scores():
 def choose_joker(player_name):
     return render_template('choose_joker.html', player_name=player_name, jokers_by_rarity=load_jokers_by_rarity())
 
+@app.route('/admin/jokers', methods=['GET', 'POST'])
+def manage_jokers():
+    if not session.get('admin'):
+        flash("Admin login required", "error")
+        return redirect('/login')
+
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+
+    if request.method == 'POST':
+        for joker_name in request.form:
+            new_rarity = request.form[joker_name]
+            c.execute("UPDATE jokers SET rarity = ? WHERE name = ?", (new_rarity, joker_name))
+        conn.commit()
+        flash("Rarities updated!", "success")
+
+    c.execute("SELECT name, rarity FROM jokers ORDER BY name ASC")
+    jokers = c.fetchall()
+    conn.close()
+
+    return render_template('admin_jokers.html', jokers=jokers)
 
 @app.route('/select_joker', methods=['POST'])
 def select_joker():
