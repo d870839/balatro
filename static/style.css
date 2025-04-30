@@ -89,7 +89,7 @@ th {
 td {
     background-color: #111;
 }
-
+.balatro-button,
 button {
     background: linear-gradient(to bottom, #3a2d4d, #241a33);
     color: #f8e9ff;
@@ -104,14 +104,14 @@ button {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
+.balatro-button:hover,
 button:hover {
     background: linear-gradient(to bottom, #4c3870, #2e2143);
     color: #ffffff;
     transform: scale(1.05);
     box-shadow: 0 0 12px #ad7bff;
 }
-
+.balatro-button:active,
 button:active {
     transform: scale(0.97);
     box-shadow: 0 0 4px #ad7bff;
