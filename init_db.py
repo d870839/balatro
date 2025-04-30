@@ -1,6 +1,7 @@
 import sqlite3
 
-conn = sqlite3.connect('scoreboard.db')
+DB_PATH = '/opt/render/project/src/scoreboard.db'
+conn = sqlite3.connect(DB_PATH)
 c = conn.cursor()
 
 # Create players table if missing

@@ -6,7 +6,7 @@ from flask import send_from_directory
 
 
 app = Flask(__name__)
-DB_PATH = 'scoreboard.db'
+DB_PATH = '/opt/render/project/src/scoreboard.db'
 app.secret_key = "my-key"
 
 joker_rarity = {
@@ -33,7 +33,7 @@ joker_rarity = {
 }
 
 def load_jokers_by_rarity():
-    conn = sqlite3.connect('scoreboard.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute('SELECT name, rarity FROM jokers')
     rows = c.fetchall()
@@ -139,7 +139,7 @@ def select_joker():
 
 @app.route('/all_joker_stats')
 def all_joker_stats():
-    conn = sqlite3.connect('scoreboard.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute('''
