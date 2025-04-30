@@ -209,3 +209,28 @@ button:hover {
     text-shadow: 0 0 10px violet;
     font-weight: bold;
 }
+
+.compact-table {
+    font-size: 14px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.compact-table th,
+.compact-table td {
+    padding: 4px 8px;
+    text-align: left;
+}
+
+.compact-table select {
+    font-size: 13px;
+    padding: 2px;
+}
+
+.compact-table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.compact-table tr:hover {
+    background-color: #e0f7ff;
+}

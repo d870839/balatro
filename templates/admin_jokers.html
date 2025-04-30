@@ -9,31 +9,37 @@
     <h1>Edit Joker Rarities</h1>
 
     <form method="POST">
-        <table>
-            <thead>
-                <tr>
-                    <th>Joker</th>
-                    <th>Rarity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for name, rarity in jokers %}
-                <tr>
-                    <td>{{ name }}</td>
-                    <td>
-                        <select name="{{ name }}">
-                            {% for option in ['Common', 'Uncommon', 'Rare', 'Legendary'] %}
-                            <option value="{{ option }}" {% if option == rarity %}selected{% endif %}>{{ option }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br>
-        <button type="submit">Save Changes</button>
+        <div style="max-height: 600px; overflow-y: auto; border: 1px solid #ccc; margin-bottom: 60px;">
+            <table class="compact-table">
+                <thead>
+                    <tr>
+                        <th>Joker</th>
+                        <th>Rarity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, rarity in jokers %}
+                    <tr>
+                        <td>{{ name }}</td>
+                        <td>
+                            <select name="{{ name }}">
+                                {% for option in ['Common', 'Uncommon', 'Rare', 'Legendary'] %}
+                                <option value="{{ option }}" {% if option == rarity %}selected{% endif %}>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Sticky Save Button -->
+        <div style="position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ccc; padding: 10px; z-index: 10;">
+            <button type="submit">💾 Save Changes</button>
+        </div>
     </form>
+    
 
     <div class="back-link">
         <a href="/">⬅️ Back to Scoreboard</a>

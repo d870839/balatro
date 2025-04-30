@@ -101,7 +101,18 @@ def manage_jokers():
         conn.commit()
         flash("Rarities updated!", "success")
 
-    c.execute("SELECT name, rarity FROM jokers ORDER BY name ASC")
+    c.execute("""
+    SELECT name, rarity FROM jokers
+    ORDER BY
+        CASE rarity
+            WHEN 'Common' THEN 1
+            WHEN 'Uncommon' THEN 2
+            WHEN 'Rare' THEN 3
+            WHEN 'Legendary' THEN 4
+            ELSE 5
+        END,
+        name ASC
+""")
     jokers = c.fetchall()
     conn.close()
 
