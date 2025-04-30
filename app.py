@@ -1,9 +1,6 @@
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash, send_from_directory
 import sqlite3
 import os
-
-from flask import send_from_directory
-
 
 app = Flask(__name__)
 DB_PATH = '/opt/render/project/src/scoreboard.db'
@@ -134,6 +131,8 @@ def select_joker():
 
     conn.commit()
     conn.close()
+
+    print(f"✅ SAVING: {player_name} → {joker_name}")
 
     return redirect('/')
 
