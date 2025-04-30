@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, session, flash
 import sqlite3
 import os
 
+from flask import send_from_directory
+
+
 app = Flask(__name__)
 DB_PATH = 'scoreboard.db'
 app.secret_key = "my-key"
@@ -44,6 +47,12 @@ def load_jokers_by_rarity():
             jokers["Common"].append(name)  # Default to Common if somehow missing
 
     return jokers
+
+@app.route('/static/jokers/<rarity>/<filename>')
+def cached_joker(rarity, filename):
+    response = send_from_directory(f'static/jokers/{rarity}', filename)
+    response.headers['Cache-Control'] = 'public, max-age=31536000'
+    return response
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
