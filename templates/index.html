@@ -66,6 +66,11 @@
                 <button type="submit">Add</button>
             </form>
         </div>
+        {% if session.get('admin') %}
+    <div class="admin-link">
+        <a href="/admin/jokers">🛠 Edit Joker Rarities</a>
+    </div>
+{% endif %}
         {% endif %}
         <div class="login-footer">
             {% if session.get('admin') %}
