@@ -230,7 +230,7 @@ def remove():
     conn.close()
     return redirect('/')
 
-
+print(f"📦 Connected to DB at: {DB_PATH}")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
