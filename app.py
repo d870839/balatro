@@ -119,6 +119,7 @@ def manage_jokers():
 def select_joker():
     player_name = request.form['player_name']
     joker_name = request.form['joker_name']
+    print(f"📌 select_joker(): {player_name=} | {joker_name=}")  # Add this line
 
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -182,6 +183,8 @@ def player_stats(player_name):
     ''', (player_name,))
     joker_stats = c.fetchall()
     conn.close()
+
+    print(f"🧪 player_stats(): {player_name=}")
 
     return render_template('player_stats.html', player_name=player_name, joker_stats=joker_stats,total_selections=total_selections)
 
