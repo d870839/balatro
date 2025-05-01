@@ -82,6 +82,11 @@ def get_scores():
 def choose_joker(player_name):
     return render_template('choose_joker.html', player_name=player_name, jokers_by_rarity=load_jokers_by_rarity())
 
+@app.route('/choose_joker/')
+def choose_joker_missing():
+    flash("You must choose a player first.", "error")
+    return redirect('/')
+
 @app.route('/admin/jokers', methods=['GET', 'POST'])
 def manage_jokers():
     if not session.get('admin'):
