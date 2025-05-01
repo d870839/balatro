@@ -1,7 +1,10 @@
 import sqlite3
 import os
 
-DB_PATH = '/opt/render/project/src/scoreboard.db'
+if os.getenv("RENDER"):
+    DB_PATH = '/opt/render/project/src/scoreboard.db'  # Render path
+else:
+    DB_PATH = 'scoreboard.db'  # Local dev path
 
 
 conn = sqlite3.connect(DB_PATH)
