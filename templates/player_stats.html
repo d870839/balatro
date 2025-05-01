@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <pre>Total selections: {{ total_selections }}</pre>
+    <pre>Stats: {{ joker_stats }}</pre>
     <h1>{{ player_name }}'s Joker Stats</h1>
 
     {% if joker_stats %}
